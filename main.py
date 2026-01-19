@@ -2,7 +2,6 @@
 from typing import Annotated
 
 from contextlib import asynccontextmanager
-from fastapi.exception_handlers import http_exception_handler, request_validation_exception_handler
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
