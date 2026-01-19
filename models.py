@@ -8,6 +8,14 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from database import Base
 
 class User(Base):
+    """ User object
+
+    Args:
+        Base (_type_): De basis klasse voor alle modellen
+
+    Returns:
+        User: Een gebruiker in de database
+    """
     #* Naam van de tabel in de database
     __tablename__ = "users"
     #* Id is het primaire sleutelveld
@@ -25,7 +33,7 @@ class User(Base):
     #* De back_populates zorgt voor bidirectionele relatie.
     #* Ook gebruiken we Post zonder Post te definiëren vanwege
     #* from __future__ import annotations
-    posts: Mapped[list[Post]] = relationship(back_populates="author")
+    posts: Mapped[list[Post]] = relationship(back_populates="author", cascade="all, delete-orphan")
 
     #* Property om het pad naar de profielafbeelding te krijgen,
     #* anders standaardafbeelding gebruiken.
